@@ -41,38 +41,39 @@
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>
-    </div>
-    </nav>
+  </div>
+</nav>
 
-    <h1 class="text-center">View Dresses</h1>
-    <a href="/create">
-      <button class="btn btn-success">
-      Create
-      </button>
-    </a>
-    <div class="d-flex flex-row justify-content-center gap-5">
-    @foreach ($dresses as $d)
-        <div class="card" style="width: 18rem;">
-            <img src="{{asset('/storage/image/'.$d->image)}}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Dresstype: {{$d->dresstype}}</h5>
-                <p class="card-text">Designer: {{$d->designer}}</p>
-                <p class="card-text">Color: {{$d->color}}</p>
-                <p class="card-text">Size: {{$d->size}}</p>
-                <p class="card-text">Stock: {{$d->stock}}</p>
-                <p class="card-text">Category: {{$d->category->category_name}}</p>
-                <a href="{{route('edit', $d->id)}}" class="btn btn-primary">Edit</a>
 
-                <form action="{{route('delete', $d->id)}}" method="POST">
-                  @csrf
-                  @method('delete')
-                  <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-
+<div class="p-5">
+          <h1 class="text-center">Edit Dress</h1>
+          <form action="{{route('update', $dress->id)}}" method="POST">
+          @csrf
+          @method('patch')
+            <div class="mb-3">
+              <label for="" class="form-label">Dresstype</label>
+              <input value="{{ $dress->dresstype }}" type="text" class="form-control" id="" name="dresstype">
             </div>
-        </div>
-        @endforeach
-</div>
+            <div class="mb-3">
+              <label for="" class="form-label">Designer</label>
+              <input value="{{ $dress->designer }}" type="text" class="form-control" id="" name="designer">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Color</label>
+                <input value="{{ $dress->color }}" type="text" class="form-control" id="" name="color">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Size</label>
+                <input value="{{ $dress->size }}" type="number" class="form-control" id="" name="size">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Stock</label>
+                <input value="{{ $dress->stock }}" type="number" class="form-control" id="" name="stock">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+      </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -47,28 +47,72 @@
 
 <div class="p-5">
           <h1 class="text-center">Create Dress</h1>
-          <form action="{{route('store')}}" method="POST">
+          <form action="{{route('store')}}" method="POST" enctype="multipart/form-data">
             @csrf
+
+
             <div class="mb-3">
               <label for="" class="form-label">Dresstype</label>
-              <input type="text" class="form-control" id="" name="dresstype">
+              <input value="{{old('dresstype')}}" type="text" class="form-control" id="" name="dresstype">
             </div>
+            @error('dresstype')
+              <div class="alert alert-danger" role="alert">{{$message}}</div>
+            @enderror
+
+
             <div class="mb-3">
               <label for="" class="form-label">Designer</label>
-              <input type="text" class="form-control" id="" name="designer">
+              <input value="{{old('designer')}}" type="text" class="form-control" id="" name="designer">
             </div>
+            @error('designer')
+              <div class="alert alert-danger" role="alert">{{$message}}</div>
+            @enderror
+
+
             <div class="mb-3">
                 <label for="" class="form-label">Color</label>
-                <input type="text" class="form-control" id="" name="color">
+                <input value="{{old('color')}}" type="text" class="form-control" id="" name="color">
             </div>
+            @error('color')
+              <div class="alert alert-danger" role="alert">{{$message}}</div>
+            @enderror
+
+
             <div class="mb-3">
                 <label for="" class="form-label">Size</label>
-                <input type="number" class="form-control" id="" name="size">
+                <input value="{{old('size')}}" type="number" class="form-control" id="" name="size">
             </div>
+            @error('size')
+              <div class="alert alert-danger" role="alert">{{$message}}</div>
+            @enderror
+
+
             <div class="mb-3">
                 <label for="" class="form-label">Stock</label>
-                <input type="number" class="form-control" id="" name="stock">
+                <input value="{{old('stock')}}" type="number" class="form-control" id="" name="stock">
             </div>
+            @error('stock')
+              <div class="alert alert-danger" role="alert">{{$message}}</div>
+            @enderror
+
+
+            <div class="mb-3">
+                <label for="" class="form-label">Image</label>
+                <input type="file" class="form-control" id="" name="image">
+            </div>
+            @error('image')
+              <div class="alert alert-danger" role="alert">{{$message}}</div>
+            @enderror
+
+            <div class="mb-3">
+                <label for="" class="form-label">Category</label>
+                <select class="form-select" aria-label="Default select example" name="category_name">
+                    @foreach ($categories as $c)
+                        <option value="{{$c->id}}">{{$c->category_name}}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
       </div>

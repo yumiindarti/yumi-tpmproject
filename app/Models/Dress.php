@@ -10,6 +10,10 @@ class Dress extends Model
     use HasFactory;
 
     protected $fillable = [
-        'dresstype','designer','color','size','stock'
+        'dresstype','designer','color','size','stock','image','category_id'
     ];
+
+    public function category(){
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 }
